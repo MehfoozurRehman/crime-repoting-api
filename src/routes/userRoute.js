@@ -69,7 +69,14 @@ router.post("/user/login", async (req, res) => {
     bcrypt.compare(password, user.password).then(function (result) {
       if (result) {
         res.status(200).json({
+          _id: user._id,
+          name: user.name,
           email: user.email,
+          gender: user.gender,
+          phone: user.phone,
+          address: user.address,
+          role: user.role,
+          createdAt: user.createdAt,
         });
       } else {
         res.status(301).send("invalid crediantials");
